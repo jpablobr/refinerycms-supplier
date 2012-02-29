@@ -1,0 +1,24 @@
+<% content_for :body_content_left do %>
+  <%=raw @page[Page.default_parts.first.to_sym] if Page.default_parts.any? %>
+
+  <% if @supplier_posts.any? %>
+    <section id="supplier_posts">
+      <%= render :partial => "/supplier/shared/post", :collection => @supplier_posts %>
+      <%= will_paginate @supplier_posts %>
+    </section>
+  <% else %>
+    <p><%= t('.no_supplier_articles_yet') %></p>
+  <% end %>
+<% end %>
+
+<% content_for :body_content_right do %>
+  <%=raw @page[Page.default_parts.second.to_sym] if Page.default_parts.many? %>
+
+  <%= render :partial => "/supplier/shared/categories" %>
+  <%= render :partial => "/supplier/shared/tags" %>
+  <%= render :partial => "/supplier/shared/rss_feed" %>
+  <%= render :partial => "/supplier/shared/archive_list" %>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>
+<% content_for :stylesheets, stylesheet_link_tag('refinerycms-supplier') %>

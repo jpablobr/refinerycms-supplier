@@ -1,0 +1,10 @@
+<% if @supplier_posts.many? %>
+  <h2><%= t('.other') %></h2>
+  <ul id="supplier_posts">
+    <% @supplier_posts.each do |supplier_post| %>
+      <li class='clearfix'>
+        <%= link_to supplier_post.title, supplier_post_url(supplier_post) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

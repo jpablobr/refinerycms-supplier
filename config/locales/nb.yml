@@ -1,0 +1,30 @@
+nb:
+  plugins:
+    refinerycms_supplier:
+      title: Supplier
+  admin:
+    supplier:
+      posts:
+        form:
+          seo_override_title: Nettleser tittel
+          seo_override_title_help: Skriv inn en tittel på 5-10 ord som oppsummerer innholdet på siden.
+          meta_keywords_title: Meta stikkord
+          meta_keywords_help: Skriv inn 5-10 stikkord som relaterer til denne siden. Separer stikkordene med komma.
+          meta_description_title: Meta beskrivelse
+          meta_description_help: Skriv en kort beskrivelse på to eller tre setninger som forteller hva denne siden inneholder.
+        index:
+          no_items_yet: 'Det er ingen Supplier Posts enda. Klikk på "Lag en ny Supplier Posts" for å legge til din første supplier posts.'
+        post:
+          view_live: 'Vis hvordan denne supplier post ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>'
+          edit: Rediger denne supplier post
+          delete: Fjern denne supplier post permanent
+      submenu:
+        comments:
+          new: ny
+        posts:
+          new: Lag en ny post
+        settings:
+          update_notified: Oppdater hvem som blir informert
+  supplier_posts:
+    show:
+      other: Andre Supplier Posts

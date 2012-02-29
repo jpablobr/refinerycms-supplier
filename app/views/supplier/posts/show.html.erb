@@ -1,0 +1,98 @@
+<% content_for :body_content_left do %>
+  <div id="show_supplier_post">
+    <% flash.each do |key, value| %>
+     <div id='flash' class="flash flash_<%= key %>">
+       <%= value %>
+     </div>
+    <% end %>
+    <article id="supplier_post">
+      <header>
+        <h1><%= @supplier_post.title %></h1>
+        <section class='details'>
+          <time datetime="<%=l @supplier_post.published_at.to_date, :format => :default %>" class='posted_at'>
+            <%= t('created_at', :scope => 'supplier.shared.posts', :when => l(@supplier_post.published_at.to_date, :format => :short)) %>
+          </time>
+          <%= "#{t('by', :scope => 'supplier.posts.show')} #{@supplier_post.author.username}" if @supplier_post.author.present? %>.
+          <% if (categories = @supplier_post.categories).any? %>
+            <aside class='filed_in'>
+              <%= t('filed_in', :scope => 'supplier.posts.show') %>
+              <% categories.each_with_index do |category, index| %>
+                <%= link_to category.title, supplier_category_url(category) -%><%= ',' if index < ((categories.length) - 1) %>
+              <% end %>
+            </aside>
+          <% end %>
+        </section>
+      </header>
+      <%= @supplier_post.body.html_safe %>
+
+      <% if SupplierPost::ShareThis.enabled? %>
+        <span class="st_sharethis" displayText="ShareThis"></span>
+      <% end %>
+    </article>
+    <%= render :partial => '/shared/draft_page_message' unless @supplier_post.nil? or @supplier_post.live? -%>
+    <%= render 'nav' if next_or_previous?(@supplier_post) %>
+    
+  </div>
+
+  <% if SupplierPost.comments_allowed? %>
+    <aside id="comments">
+      <h2><%= t('.comments.title') %></h2>
+      <% if (comments = @supplier_post.comments.approved).any? %>
+        <%= render :partial => "comment", :collection => comments %>
+      <% else %>
+        <p>
+          <%= t('none', :scope => 'supplier.shared.comments') %>.
+        </p>
+      <% end %>
+
+      <% flash.each do |key, value| %>
+        <div id='flash' class="flash flash_<%= key %>">
+          <%= value %>
+        </div>
+      <% end %>
+
+      <h2><%= t('.comments.add') %></h2>
+      <%= form_for [:supplier_post, @supplier_comment] do |f| %>
+        <%= render :partial => "/shared/admin/error_messages",
+                   :locals => {
+                     :object => f.object,
+                     :include_object_name => true
+                   } %>
+        <div class='field'>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+        <div class='field'>
+          <%= f.label :email %>
+          <%= f.email_field :email %>
+        </div>
+        <div class='field message_field'>
+          <%= f.label :message %>
+          <%= f.text_area :message, :rows => 6 %>
+        </div>
+        <div class='field form-actions'>
+          <%= f.submit t('.submit') %>
+        </div>
+      <% end %>
+    </aside>
+  <% end %>
+<% end %>
+
+<% content_for :body_content_right do %>
+  <%= render :partial => "/supplier/shared/categories" %>
+  <%= render :partial => "/supplier/shared/tags" %>
+  <%= render :partial => "/supplier/shared/related_posts" %>
+  <%= render :partial => "/supplier/shared/rss_feed" %>
+  <%= render :partial => "/supplier/shared/archive_list" %>
+<% end %>
+
+<%= render :partial => "/shared/content_page", :locals => { :remove_automatic_sections => true }  %>
+
+<% content_for :stylesheets, stylesheet_link_tag('refinerycms-supplier') %>
+<% content_for :before_javascript_libraries, jquery_include_tags(:jquery_ui => false) %>
+<% content_for :javascripts do %>
+  <%# enable AJAX'd post nav at your own risk until html5 history API implemented. %>
+  <%#= javascript_include_tag('refinerycms-supplier') %>
+  <script src="http://w.sharethis.com/button/buttons.js"></script>
+  <script>stLight.options({publisher:'<%= SupplierPost::ShareThis.key %>'});</script>
+<% end if SupplierPost::ShareThis.enabled? %>

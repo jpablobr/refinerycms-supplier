@@ -1,0 +1,96 @@
+<nav id='actions' class='multilist'>
+  <ul class='search_list'>
+    <li class='not_a_link'>
+      <%= render :partial => "/shared/admin/search",
+                 :locals => {
+                   :url => admin_supplier_posts_url
+                 } %>
+    </li>
+  </ul>
+
+  <ul class='collapsible_menu'>
+    <li class='not_a_link'>
+      <%= link_to t('.posts.title'), '#',
+                   :class => 'page_copy_icon' %>
+    </li>
+    <li>
+      <%= link_to t('.posts.manage'), admin_supplier_posts_path,
+                   :class => 'page_icon' %>
+    </li>
+    <li>
+      <%= link_to t('.posts.uncategorized'), uncategorized_admin_supplier_posts_url,
+                  :class => 'page_icon' %>
+    </li>
+    <li>
+       <%= link_to t('.posts.new'), new_admin_supplier_post_url,
+                   :class => 'page_add_icon' %>
+    </li>
+  </ul>
+  <% if SupplierPost.comments_allowed? %>
+    <ul class='collapsible_menu'>
+      <li class='not_a_link'>
+        <% if SupplierComment.unmoderated.any? %>
+          <% title = t('.comments.title_with_count', :new_count => SupplierComment.unmoderated.size) %>
+        <% else %>
+          <% title = t('.comments.title') %>
+        <% end %>
+        <%= link_to title, '#',
+                    :class => 'comments_icon' %>
+      </li>
+      <li>
+        <%= link_to t('.comments.new'), admin_supplier_comments_path,
+                    :class => 'comment_icon' %>
+      </li>
+      <li>
+        <%= link_to t('.comments.approved'), approved_admin_supplier_comments_path,
+                    :class => 'comment_tick_icon' %>
+      </li>
+      <li>
+        <%= link_to t('.comments.rejected'), rejected_admin_supplier_comments_path,
+                    :class => 'comment_cross_icon' %>
+      </li>
+    </ul>
+  <% end %>
+
+  <ul class='collapsible_menu'>
+    <li class='not_a_link'>
+      <%= link_to t('.categories.title'), '#',
+                  :class => 'folder_icon' %>
+    </li>
+    <li>
+      <%= link_to t('.categories.manage'), admin_supplier_categories_url,
+                  :class => 'folder_edit_icon' %>
+    </li>
+    <li>
+      <%= link_to t('.categories.new'), new_admin_supplier_category_url(:dialog => true, :height => 325),
+                  :class => 'folder_add_icon' %>
+    </li>
+  </ul>
+
+  <ul class='collapsible_menu'>
+    <li class='not_a_link'>
+      <%= link_to t('.settings.title'), admin_supplier_settings_path,
+                  :class => 'settings_icon' %>
+    </li>
+    <li>
+      <%= link_to t('.settings.comments'), comments_admin_supplier_settings_url,
+                  :class => "#{SupplierPost.comments_allowed? ? 'success' : 'failure'}_icon" %>
+    </li>
+    <li>
+      <%= link_to t('.settings.moderation'), moderation_admin_supplier_settings_url,
+                  :class => "#{SupplierComment::Moderation.enabled? ? 'success' : 'failure'}_icon" %>
+    </li>
+    <li>
+      <%= link_to t('.settings.update_notified'),
+                  notification_recipients_admin_supplier_settings_url(:dialog => true, :height => 400),
+                  :class => 'user_comment_icon' %>
+    </li>
+    <li>
+      <%= link_to t('.settings.teasers'),
+                  teasers_admin_supplier_settings_url, :class => "#{SupplierPost.teasers_enabled? ? 'success' : 'failure'}_icon" %>
+    </li>
+  </ul>
+
+</nav>
+
+<% content_for :stylesheets, stylesheet_link_tag('refinery/refinerycms-supplier')%>

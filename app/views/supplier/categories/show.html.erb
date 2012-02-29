@@ -1,0 +1,21 @@
+<% content_for :body_content_title, @category.title %>
+
+<% content_for :body_content_left do %>
+  <% if @supplier_posts.any? %>
+    <section id="supplier_posts">
+      <%= render :partial => "/supplier/shared/post", :collection => @supplier_posts %>
+      <%= will_paginate @supplier_posts %>
+    </section>
+  <% else %>
+    <p>
+      <%= t('.no_posts') %>
+    </p>
+  <% end %>
+<% end %>
+
+<% content_for :body_content_right do %>
+  <%= render :partial => "/supplier/shared/categories" %>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>
+<% content_for :stylesheets, stylesheet_link_tag('refinerycms-supplier') %>

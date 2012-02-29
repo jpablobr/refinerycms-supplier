@@ -1,0 +1,57 @@
+.comments_icon {
+  background-image: url('/images/refinerycms-supplier/icons/comments.png');
+}
+.comment_icon {
+  background-image: url('/images/refinerycms-supplier/icons/comment.png');
+}
+.comment_cross_icon {
+  background-image: url('/images/refinerycms-supplier/icons/comment_cross.png');
+}
+.comment_tick_icon {
+  background-image: url('/images/refinerycms-supplier/icons/comment_tick.png');
+}
+.folder_icon {
+  background-image: url('/images/refinerycms-supplier/icons/folder.png');
+}
+.folder_add_icon {
+  background-image: url('/images/refinerycms-supplier/icons/folder_add.png');
+}
+.folder_edit_icon {
+  background-image: url('/images/refinerycms-supplier/icons/folder_edit.png');
+}
+.settings_icon {
+  background-image: url('/images/refinerycms-supplier/icons/cog.png');
+}
+.page_icon {
+  background-image: url('/images/refinerycms-supplier/icons/page.png');
+}
+.page_copy_icon {
+  background-image: url('/images/refinerycms-supplier/icons/page_copy.png');
+}
+.page_add_icon {
+  background-image: url('/images/refinerycms-supplier/icons/page_add.png');
+}
+ul.collapsible_menu li {
+  position: relative;
+}
+ul.collapsible_menu li span.arrow {
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 10px;
+  top: 13px;
+  width: 11px;
+  height: 7px;
+  cursor: pointer;
+}
+ul.collapsible_menu li span.arrow {
+  background-image: url('/images/refinerycms-supplier/icons/up.gif');
+}
+ul.collapsible_menu li.closed span.arrow {
+  background-image: url('/images/refinerycms-supplier/icons/down.gif');
+}
+ul.collapsible_menu > div {
+  width: 93%;
+  margin: 0px auto;
+}
+
+#records > ul li {padding:0 84px 0 5px;}

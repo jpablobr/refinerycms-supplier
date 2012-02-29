@@ -1,0 +1,128 @@
+sk:
+  plugins:
+    refinerycms_supplier:
+      title: Supplier
+  admin:
+    supplier:
+      categories:
+        category:
+          edit: Upraviť kategóriu
+          delete: Zmazať kategóriu
+        index:
+          no_items_yet: 'Nie sú tu žiadne kategórie. Klikni "%{create}" pre pridanie prvej.'
+      comments:
+        approved: 'Komentár od "%{author}" bol schválený.'
+        comment:
+          view_live_html: 'Zobraziť živý náhľad <br/><em>(otvorí nové okno)</em>'
+          read: Zobraziť komentár
+          reject: Zamietnuť komentár
+          approve: Schváliť
+        rejected: 'Komentár od "%{author}" bol zamietnutý.'
+        index:
+          no_items_yet: 'Nie sú tu žiadne %{type} komentáre.'
+        show:
+          comment: Komentár
+          supplier_post: Supplier článok
+          from: Odoslal
+          date: Dátum
+          message: Správa
+          details: Detaily
+          age: Vek
+          actions: Akcie
+          back: Späť na zoznam komentárov.
+          reject: Zamietnuť komentár
+          approve: Schváliť komentár
+      posts:
+        form:
+          advanced_options: Pokročilé nastavenia
+          toggle_advanced_options: Klikni pre prístup k nastaveniam meta tagov a menu
+          save_as_draft: Uložiť ako koncept
+          published_at: Dátum publikovania
+        index:
+          no_items_yet: 'Nie sú žiadne články na supplieru. Klikni na "%{create}" pre pridanie prvého.'
+        uncategorized:
+          no_items_yet: 'Nie sú žiadne nekategorizované články.'
+        post:
+          view_live_html: 'Zobraziť článok<br/><em>(otvorí ho v novom okne)</em>'
+          edit: Upraviť článok
+          delete: Zmazať článok
+      settings:
+        notification_recipients:
+          value: Poslať notifikáciu pre
+          explanation: 'Vždy keď niekto pridá komentár, Refinery pošle notifikáciu.'
+          hint: 'Vždy keď niekto pridá komentár, Refinery ti pošle notifikáciu.'
+          example: "Zadaj tvoju emailovú adresu(y) ako napríklad: jack@work.com, jill@office.com"
+          updated: 'Zoznam príjemcov notifikácií "%{recipients}"'
+      submenu:
+        categories:
+          title: Kategórie
+          manage: Spravovať
+          new: Nová kategória
+        comments:
+          title: Komentáre
+          title_with_count: 'Komentáre (%{new_count} nových)'
+          new: Nový
+          unmoderated: Nový
+          approved: Schválený
+          rejected: Zamietnutý
+        posts:
+          title: Články
+          manage: Spravovať články
+          new: Vytvoriť nový článok
+          uncategorized: Nekategorizované články
+        settings:
+          title: Nastavenia
+          moderation: Moderovanie
+          update_notified: Upraviť zoznam notifikovaných
+          comments: Komentáre
+  supplier:
+    comment_mailer:
+      notification:
+        greeting: Ahoj
+        you_recieved_new_comment: Máš nový komentár na stránke
+        comment_starts: --- začiatok komentára ---
+        comment_ends: --- koniec komentára ---
+        from: Od
+        email: Email
+        message: Správa
+        closing_line: S pozdravom
+        ps: 'P.S. Všetky komentáre su uložené v sekcii "Supplier" pod záložkou "Komentáre" v prípade ak by ich bolo potrebné zobraziť neskôr.'
+    shared:
+      categories:
+        title: Kategórie
+      rss_feed:
+        title: RSS zdroj článkov
+        subscribe: Prihlásiť k odberu
+      posts:
+        other: Ďaľšie články
+        created_at: 'Publikovaný %{when}'
+        read_more: Celý článok
+      comments:
+        singular: komentár
+        none: Nie sú tu žiadne komentáre
+      archives: Archív
+    categories:
+      show:
+        no_posts: Nie sú tu žiadne články momentálne.
+    posts:
+      post:
+        filed_in: Podaný
+      comment: komentár
+      comments:
+        by: 'Odoslal %{who}'
+        time_ago: '%{time} späť'
+        thank_you: 'Vďaka za komentár.'
+        thank_you_moderated: 'Ďakujeme za Váš komentár. Vaša správa čaká na schválenie a objaví sa v najbližšej dobe.'
+      index:
+        no_supplier_articles_yet: Práve Nie sú žiadne články na supplieru. Zostante naladení.
+      show:
+        supplier_home: Hlavná stránka supplieru
+        comments:
+          title: Komentáre
+          add: Pridať komentár
+        other: Ďalšie články
+        filed_in: Podaný
+        submit: Odoslať komentár
+      archive:
+        supplier_archive_for: 'Supplier archív pre %{date}'
+        no_supplier_articles_posted: 'Nie sú žiadne články publikované %{date}.'

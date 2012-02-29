@@ -1,0 +1,20 @@
+<% content_for :body_content_left do %>
+  <h1><%= t('.supplier_archive_for', :date => @archive_date.strftime('%B %Y')) %></h1>
+  <% if @supplier_posts.any? %>
+    <section id="supplier_posts">
+      <%= render :partial => "/supplier/shared/post", :collection => @supplier_posts %>
+    </section>
+  <% else %>
+    <p><%= t('.no_supplier_articles_posted', :date => @archive_date.strftime('%B %Y')) %></p>
+  <% end %>
+<% end %>
+
+<% content_for :body_content_right do %>
+  <%= render :partial => "/supplier/shared/categories" %>
+  <%= render :partial => "/supplier/shared/tags" %>
+  <%= render :partial => "/supplier/shared/rss_feed" %>
+  <%= render :partial => "/supplier/shared/archive_list" %>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>
+<% content_for :stylesheets, stylesheet_link_tag('refinerycms-supplier') %>
